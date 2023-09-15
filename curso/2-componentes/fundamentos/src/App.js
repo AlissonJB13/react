@@ -7,6 +7,7 @@ import Events from "./components/Events";
 //import logo from './logo.svg';
 import "./App.css";
 import MyComponent from "./components/MyComponent";
+import Challenge from "./components/Challenge";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <TemplateExpressions />
       <MyComponent />
       <Events />
+      <Challenge />
     </div>
   );
 }
