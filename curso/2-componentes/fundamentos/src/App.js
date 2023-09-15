@@ -2,12 +2,12 @@
 import FirstComponent from "./components/FirstComponent";
 import TemplateExpressions from "./components/TemplateExpressions";
 import Events from "./components/Events";
+import MyComponent from "./components/MyComponent";
+import Challenge from "./components/Challenge";
 
 //styles
 //import logo from './logo.svg';
 import "./App.css";
-import MyComponent from "./components/MyComponent";
-import Challenge from "./components/Challenge";
 
 function App() {
   return (
