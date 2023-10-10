@@ -9,9 +9,42 @@ import {
   Image,
 } from "@react-pdf/renderer";
 import getCollectionData from "./PDFBioIF";
+//import { Link } from "react-router-dom";
+
 // Importe a função que obtém os dados da coleção
 
 const MyPDF = () => {
+  const styles = StyleSheet.create({
+    page: {
+      flexDirection: "row",
+      backgroundColor: "white",
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1,
+    },
+    title: {
+      fontSize: 24,
+      marginBottom: 10,
+      textAlign: "center",
+      fontWeight: "bold",
+    },
+    Text: {
+      textAlign: "justify",
+      flex: 1,
+      fontSize: 12,
+      //marginRight: 5,
+      marginBottom: 5,
+    },
+    image: {
+      width: 500, // Largura da imagem
+      height: 400, // Altura da imagem
+      //paddingLeft: 50,
+      //paddingRight: 50,
+    },
+  });
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,33 +63,30 @@ const MyPDF = () => {
             <Text style={styles.title}>Dados BioIF</Text>
             {data.map((item, index) => (
               <View key={index} style={[styles.dataRow, { marginBottom: 10 }]}>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
-                  Nome: {item.nome}
-                </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
-                  Nome do Usuário: {item["nome usuario"]}
-                </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
-                  Tipo: {item.tipo}
-                </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
+                <Text style={styles.label}>Nome: {item.nome}</Text>
+                <Text style={styles.label}>Tipo: {item.tipo}</Text>
+                <Text style={[styles.label, { marginBottom: 10 }]}>
                   Descrição: {item.descricao}
                 </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
-                  Link da foto: {item.foto}
-                </Text>
-                {/*<Image src={item.foto} />*/}
-                <Text style={[styles.label, { marginBottom: 5 }]}>
+                <div style={{ alignItems: "center" }}>
+                  <Image style={styles.image} source={{ uri: item.foto }} />
+                </div>
+
+                <Text style={styles.label}>
                   Localização: {item.localizacao}
                 </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
-                  Data: {item["data e hora"]}
-                </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
+                <Text style={styles.label}>Data: {item["data e hora"]}</Text>
+                <Text style={styles.label}>
                   Verificado: {item.verificado ? "Sim" : "Não"}
                 </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
+                <Text style={styles.label}>
                   Like: {item.like} | Dislike: {item.dislike}
+                </Text>
+                <Text style={styles.label}>
+                  Usuário Responsável: {item["nome usuario"]}
+                </Text>
+                <Text style={[styles.label, { marginBottom: 5 }]}>
+                  --------------------------------------------------------------------------------------------
                 </Text>
                 {/*<Text style={styles.label}>Dislike: {item.dislike}</Text>*/}
               </View>
@@ -67,33 +97,5 @@ const MyPDF = () => {
     </PDFViewer>
   );
 };
-
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: "row",
-    backgroundColor: "white",
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  text: {
-    textAlign: "justify",
-    flex: 1,
-    fontSize: 12,
-    //marginRight: 5,
-    marginBottom: 5,
-  },
-  image: {
-    width: 400, // Largura da imagem
-    height: 400, // Altura da imagem
-  },
-});
 
 export default MyPDF;
