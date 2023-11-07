@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, orderBy } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
@@ -18,7 +18,10 @@ const storage = getStorage(app); // Obtém a referência para o Storage
 
 const getCollectionData = async () => {
   const data = [];
-  const querySnapshot = await getDocs(collection(db, "Postagem2"));
+  const querySnapshot = await getDocs(
+    collection(db, "Postagem2"),
+    orderBy("foto", "desc")
+  );
 
   // Substitua 'suaColecao' pelo nome da sua coleção
 

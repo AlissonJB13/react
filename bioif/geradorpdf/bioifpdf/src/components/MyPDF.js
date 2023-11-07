@@ -15,10 +15,10 @@ import getCollectionData from "./PDFBioIF";
 
 const MyPDF = () => {
   const styles = StyleSheet.create({
-    page: {
+    /*page: {
       flexDirection: "row",
       backgroundColor: "white",
-    },
+    },*/
     section: {
       margin: 10,
       padding: 10,
@@ -38,8 +38,8 @@ const MyPDF = () => {
       marginBottom: 5,
     },
     image: {
-      width: 500, // Largura da imagem
-      height: 400, // Altura da imagem
+      // Altura da imagem
+      objectFit: "contain",
       //paddingLeft: 50,
       //paddingRight: 50,
     },
@@ -56,13 +56,14 @@ const MyPDF = () => {
   }, []);
 
   return (
-    <PDFViewer width="1000" height="600">
+    <PDFViewer width="842" height="595">
       <Document>
-        <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text style={styles.title}>Dados BioIF</Text>
-            {data.map((item, index) => (
-              <View key={index} style={[styles.dataRow, { marginBottom: 10 }]}>
+        {data.map((item, index) => (
+          <Page key={index} size="A4" orientation="portrait">
+            <View style={styles.section}>
+              {/*<Text style={styles.title}>Dados BioIF</Text>*/}
+
+              <View style={[styles.dataRow, { marginBottom: 10 }]}>
                 <Text style={styles.label}>Nome: {item.nome}</Text>
                 <Text style={styles.label}>Tipo: {item.tipo}</Text>
                 <Text style={[styles.label, { marginBottom: 10 }]}>
@@ -82,17 +83,10 @@ const MyPDF = () => {
                 <Text style={styles.label}>
                   Like: {item.like} | Dislike: {item.dislike}
                 </Text>
-                <Text style={styles.label}>
-                  Usuário Responsável: {item["nome usuario"]}
-                </Text>
-                <Text style={[styles.label, { marginBottom: 5 }]}>
-                  --------------------------------------------------------------------------------------------
-                </Text>
-                {/*<Text style={styles.label}>Dislike: {item.dislike}</Text>*/}
               </View>
-            ))}
-          </View>
-        </Page>
+            </View>
+          </Page>
+        ))}
       </Document>
     </PDFViewer>
   );
