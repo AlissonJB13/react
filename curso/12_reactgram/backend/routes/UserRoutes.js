@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-//controller
+// Controller
 const {
   register,
-  login,
   getCurrentUser,
+  login,
   update,
   getUserById,
 } = require("../controllers/UserController");
 
-//middlewares
-const validate = require("../middlewares/handleValidation");
+// Middlewares
+const validate = require("../middlewares/handleValidations");
 const {
   userCreateValidation,
   loginValidation,
@@ -20,10 +20,10 @@ const {
 const authGuard = require("../middlewares/authGuard");
 const { imageUpload } = require("../middlewares/imageUpload");
 
-//routes
+// Routes
 router.post("/register", userCreateValidation(), validate, register);
-router.post("/login", loginValidation(), validate, login);
 router.get("/profile", authGuard, getCurrentUser);
+router.post("/login", loginValidation(), validate, login);
 router.put(
   "/",
   authGuard,
