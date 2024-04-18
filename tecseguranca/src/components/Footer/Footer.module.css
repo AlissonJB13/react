@@ -1,0 +1,8 @@
+.footer {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #9f9946, #9f9930, #9f9920);
+}
