@@ -40,7 +40,7 @@ export const useAuthentication = () => {
       );
 
       await updateProfile(user, {
-        displayName: data.userName,
+        userName: data.userName,
       });
 
       setLoading(false);
@@ -55,16 +55,49 @@ export const useAuthentication = () => {
       if (error.message.includes("password")) {
         systemMessageError = "A senha precisa conter 6 caracteres";
       } else if (error.message.includes("email-already")) {
-        systemMessageError = "E-mail já cadastrado";
+        systemMessageError = "E-mail já cadastrado.";
       } else if (error.message.includes("invalid-email")) {
-        systemMessageError = "Por favor insira um e-mail válido";
+        systemMessageError = "Por favor insira um e-mail válido.";
       } else {
         systemMessageError =
-          "Ocorreu um erro, por favor tente novamente mais tarde";
+          "Ocorreu um erro, por favor tente novamente mais tarde.";
       }
       setLoading(false);
 
       setError(systemMessageError);
+    }
+  };
+
+  //logout sign out
+  const logout = () => {
+    checkIfIsCancelled();
+
+    signOut(auth);
+  };
+
+  //login sign in
+  const login = async (data) => {
+    checkIfIsCancelled();
+
+    setLoading(true);
+    setError(false);
+
+    try {
+      await signInWithEmailAndPassword(auth, data.userEmail, data.userPassword);
+      setLoading(false);
+    } catch (error) {
+      let systemMessageError;
+
+      if (error.message.includes("invalid")) {
+        systemMessageError =
+          "Usuário não encontrado ou senha incorreta, tente novamente.";
+      } else {
+        systemMessageError =
+          "Ocorreu um erro, por favor tente novamente mais tarde.";
+      }
+
+      setError(systemMessageError);
+      setLoading(false);
     }
   };
 
@@ -76,6 +109,8 @@ export const useAuthentication = () => {
     auth,
     createUser,
     error,
+    logout,
+    login,
     loading,
   };
 };

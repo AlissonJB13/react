@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     padding: .5em 2em;
-    background-image: linear-gradient(to top, #9f9946, #9f9930, #9f9920);
+    background-color: #264653;
 }
 
 .brand {
@@ -29,6 +29,5 @@
 }
 
 .active {
-    background-color: #000;
-    color: #FFF;
+    color: #eb9404;
 }

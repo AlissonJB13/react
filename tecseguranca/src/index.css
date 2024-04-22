@@ -1,13 +1,13 @@
 body {
-  background-color: #F6FCFF;
+  background-color: #f8f4fc;
   padding: 0;
   margin: 0;
-  font-family: "Monteserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 input::placeholder, textarea::placeholder{
-  font-family: "Monteserrat", sans-serif;
-  color: #aaa;
+  font-family: "Montserrat", sans-serif;
+  color: #8d99ae;
 }
 
 input:focus, textarea:focus {
@@ -18,15 +18,15 @@ a, nav button {
   text-decoration: none;
   background-color: transparent;
   border: none;
-  color: #000;
+  color: #fff;
   transition: .4s;
   font-size: 1em;
   cursor: pointer;
-  font-family: "Monteserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 a:hover, nav button:hover{
-  color:#6F6B29; 
+  color:#f2b654; 
 }
 
 /*form styles*/

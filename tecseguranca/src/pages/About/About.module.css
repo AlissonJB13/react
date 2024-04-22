@@ -1,0 +1,24 @@
+.about {
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 0px 20px;
+}
+.about h2 {
+    text-align: center;
+}
+
+.about p {
+    color: #000;
+    margin-bottom: 2em;
+}
+
+.about a {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 15px;
+}
+
+.about span {
+    font-weight: bold;
+}
